@@ -1,1 +1,14 @@
-Hi you made it
+<h1>Taskthing</h1>
+
+<ul id="taskList">
+  <% tasks.forEach(task => { %>
+    <li><%= task.title %></li>
+  <% }); %>
+</ul>
+
+<form id="formAddTask" action="/tasks" method="post">
+  <input name="taskTitle" type="text">
+  <button type="submit">Add new task</button>
+</form>
+
+<a href="/logout">Log out</a>

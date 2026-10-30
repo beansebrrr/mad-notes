@@ -1,4 +1,5 @@
 import { Router } from "express";
+import Task from "../models/task.model.js"
 
 const router = Router();
 
@@ -11,8 +12,15 @@ router.get("/",
       next("route")
     }
   },
-  function (req, res) {
-    res.render("index");
+  async function (req, res) {
+    let tasks;
+    try {
+      tasks = await Task.find({ userId: req.session.user }).exec()
+    } catch (err) {
+      tasks = []
+    }
+
+    res.render("index", { tasks: tasks });
   }
 )
 

@@ -13,9 +13,12 @@ router.get("/", function (req, res) {
 })
 
 router.post("/", express.urlencoded({ extended: false }), async function (req, res) {
-  const { username, password } = req.body
+  
+  const username = req.body.username.toLowerCase()
+  
+  const password = req.body.password
   const passwordHash = await bcrypt.hash(password, 10)
-
+  
   const sameNames = (await User.find({ username: username }).exec())
   if (sameNames.length > 0) {
     throw new Error("Username is unavailable")

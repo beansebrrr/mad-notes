@@ -7,7 +7,9 @@ import session from "express-session";
 
 import indexRouter from "./src/routes/index.router.js";
 import loginRouter from "./src/routes/login.router.js";
+import logoutRouter from "./src/routes/logout.router.js";
 import registerRouter from "./src/routes/register.router.js";
+import tasksRouter from "./src/routes/tasks.router.js";
 
 const __dirname = import.meta.dirname;
 
@@ -42,5 +44,7 @@ db.on("open", () => console.log("Database connected"));
 // Routes
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
 app.use("/register", registerRouter);
+app.use("/tasks", tasksRouter);
 app.listen(process.env.PORT || 3000);
