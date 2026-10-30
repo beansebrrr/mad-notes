@@ -1,31 +1,31 @@
 import { Router } from "express";
-import Task from "../models/task.model.js"
+import Task from "../models/task.model.js";
 
 const router = Router();
 
-router.get("/",
-  function (req, res, next) {
+router.get(
+	"/",
+	(req, res, next) => {
+		if (req.session.user) {
+			next();
+		} else {
+			next("route");
+		}
+	},
+	async (req, res) => {
+		let tasks;
+		try {
+			tasks = await Task.find({ userId: req.session.user }).exec();
+		} catch (err) {
+			tasks = [];
+		}
 
-    if (req.session.user) {
-      next()
-    } else {
-      next("route")
-    }
-  },
-  async function (req, res) {
-    let tasks;
-    try {
-      tasks = await Task.find({ userId: req.session.user }).exec()
-    } catch (err) {
-      tasks = []
-    }
+		res.render("index", { tasks: tasks });
+	},
+);
 
-    res.render("index", { tasks: tasks });
-  }
-)
-
-router.get("/", function (req, res) {
-  res.redirect("/login")
-})
+router.get("/", (req, res) => {
+	res.redirect("/login");
+});
 
 export default router;

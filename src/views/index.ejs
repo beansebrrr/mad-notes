@@ -1,10 +1,8 @@
 <h1>Taskthing</h1>
 
-<ul id="taskList">
-  <% tasks.forEach(task => { %>
-    <li><%= task.title %></li>
-  <% }); %>
-</ul>
+<div id="tasks">
+  <%- include("partials/taskList", { tasks: tasks }) %>
+</div>
 
 <form id="formAddTask" action="/tasks" method="post">
   <input name="taskTitle" type="text">

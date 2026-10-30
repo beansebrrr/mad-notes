@@ -4,8 +4,12 @@
 	"description": "",
 	"main": "server.js",
 	"scripts": {
+		"start": "node server.js",
 		"dev": "nodemon server.js",
-		"lint": "biome check --write"
+		"lint": "biome check --write",
+		"sass": "sass src/sass/main.scss public/styles.css --no-source-map --style=compressed",
+		"sass:watch": "sass src/sass/main.scss public/styles.css --watch",
+		"build": "pnpm run sass"
 	},
 	"keywords": [],
 	"author": "",
@@ -25,11 +29,13 @@
 		"express": "^5.3.0",
 		"express-ejs-layouts": "^2.5.1",
 		"express-session": "^1.19.0",
+		"htmx.org": "4.0.0",
 		"mongoose": "^9.11.4"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.6.3",
 		"dotenv": "^18.0.9",
-		"nodemon": "^3.1.14"
+		"nodemon": "^3.1.14",
+		"sass": "^1.107.0"
 	}
 }

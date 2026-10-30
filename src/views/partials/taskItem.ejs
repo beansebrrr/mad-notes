@@ -1,0 +1,12 @@
+<li style="view-transition-name: task-<%= task._id %>;">
+  <input type="checkbox"
+    hx-put="/tasks/<%= task._id %>"
+    hx-vals="js:{checked: this.checked}"
+    hx-trigger="change"
+    hx-target="#tasks"
+    hx-swap="innerHTML transition:true"
+    <% if (task.isChecked) { %> checked <% } %>
+  >
+  <span><%= task.title %></span>
+  <button hx-delete="/tasks/<%= task._id %>">Delet</button>
+</li>

@@ -1,0 +1,9 @@
+body {
+	font-size: var(--fs-0);
+	font-family: sans-serif;
+	background-color: var(--clr-neutral-100);
+}
+
+body > main {
+	padding: var(--space-s) max(calc((100% - 480px) / 2), var(--space-s));
+}

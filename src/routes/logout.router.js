@@ -1,19 +1,17 @@
 import { Router } from "express";
 
-const router = Router()
+const router = Router();
 
-router.get("/", function (req, res) {
-  req.session.user = null
-  req.session.save(function (err) {
-    if (err) next(err)
+router.get("/", (req, res) => {
+	req.session.user = null;
+	req.session.save((err) => {
+		if (err) next(err);
 
-    req.session.regenerate(function (err) {
-      if (err) return next(err);
-      res.redirect("/")
-    })
-  })
-})
-
-
+		req.session.regenerate((err) => {
+			if (err) return next(err);
+			res.redirect("/");
+		});
+	});
+});
 
 export default router;

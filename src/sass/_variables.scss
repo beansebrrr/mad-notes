@@ -1,0 +1,51 @@
+:root {
+	--fs--2: clamp(0.7813rem, 0.7531rem + 0.125vw, 0.8rem);
+	--fs--1: clamp(0.9375rem, 0.8438rem + 0.4167vw, 1rem);
+	--fs-0: clamp(1.125rem, 0.9375rem + 0.8333vw, 1.25rem);
+	--fs-1: clamp(1.35rem, 1.0312rem + 1.4167vw, 1.5625rem);
+	--fs-2: clamp(1.62rem, 1.1203rem + 2.2208vw, 1.9531rem);
+	--fs-3: clamp(1.944rem, 1.1979rem + 3.316vw, 2.4414rem);
+	--fs-4: clamp(2.3328rem, 1.2544rem + 4.7931vw, 3.0518rem);
+	--fs-5: clamp(2.7994rem, 1.2764rem + 6.7689vw, 3.8147rem);
+}
+
+:root {
+	--space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
+	--space-2xs: clamp(0.5625rem, 0.4688rem + 0.4167vw, 0.625rem);
+	--space-xs: clamp(0.875rem, 0.7813rem + 0.4167vw, 0.9375rem);
+	--space-s: clamp(1.125rem, 0.9375rem + 0.8333vw, 1.25rem);
+	--space-m: clamp(1.6875rem, 1.4063rem + 1.25vw, 1.875rem);
+	--space-l: clamp(2.25rem, 1.875rem + 1.6667vw, 2.5rem);
+	--space-xl: clamp(3.375rem, 2.8125rem + 2.5vw, 3.75rem);
+	--space-2xl: clamp(4.5rem, 3.75rem + 3.3333vw, 5rem);
+	--space-3xl: clamp(6.75rem, 5.625rem + 5vw, 7.5rem);
+
+	/* One-up pairs */
+	--space-3xs-2xs: clamp(0.3125rem, -0.1562rem + 2.0833vw, 0.625rem);
+	--space-2xs-xs: clamp(0.5625rem, 0rem + 2.5vw, 0.9375rem);
+	--space-xs-s: clamp(0.875rem, 0.3125rem + 2.5vw, 1.25rem);
+	--space-s-m: clamp(1.125rem, 0rem + 5vw, 1.875rem);
+	--space-m-l: clamp(1.6875rem, 0.4688rem + 5.4167vw, 2.5rem);
+	--space-l-xl: clamp(2.25rem, 0rem + 10vw, 3.75rem);
+	--space-xl-2xl: clamp(3.375rem, 0.9375rem + 10.8333vw, 5rem);
+	--space-2xl-3xl: clamp(4.5rem, 0rem + 20vw, 7.5rem);
+
+	/* Custom pairs */
+	--space-s-l: clamp(1.125rem, -0.9375rem + 9.1667vw, 2.5rem);
+}
+
+:root {
+	--clr-white: #fff;
+	--clr-neutral-50: oklch(98.5% 0 0deg);
+	--clr-neutral-100: oklch(97% 0 0deg);
+	--clr-neutral-200: oklch(92.2% 0 0deg);
+	--clr-neutral-300: oklch(87% 0 0deg);
+	--clr-neutral-400: oklch(70.8% 0 0deg);
+	--clr-neutral-500: oklch(55.6% 0 0deg);
+	--clr-neutral-600: oklch(43.9% 0 0deg);
+	--clr-neutral-700: oklch(37.1% 0 0deg);
+	--clr-neutral-800: oklch(26.9% 0 0deg);
+	--clr-neutral-900: oklch(20.5% 0 0deg);
+	--clr-neutral-950: oklch(14.5% 0 0deg);
+	--clr-black: #000;
+}
