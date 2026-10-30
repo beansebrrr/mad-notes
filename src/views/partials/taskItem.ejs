@@ -9,11 +9,12 @@
   >
   <p><%= task.title %></p>
   <button
+    class="btn--delete"
     hx-delete="/tasks/<%= task._id %>"
     hx-confirm="Are you sure you want to delete task &quot;<%= task.title %>&quot;"
     hx-target="#tasks"
     hx-swap="innerHTML transition:true"
   >
-    Delet
+    Delete
   </button>
 </li>

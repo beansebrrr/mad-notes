@@ -15,21 +15,33 @@
       border-radius: 0.1em;
       background-color: var(--clr-white);
 
+      &:has(input[type="checkbox"][checked]) {
+        color: var(--clr-neutral-500);
+      }
 
       input[type="checkbox"] {
         height: 0.75em;
         width: 0.75em;
       }
 
-      button[hx-delete] {
+      .btn--delete {
+        background-color: transparent;
+        border: var(--clr-neutral-200) solid 1px;
+        color: var(--clr-neutral-600);
+        padding: 0.15em 0.5em;
+        border-radius: 0.25em;
         font-size: var(--fs--1);
         margin-inline-start: auto;
         visibility: hidden;
         opacity: 0;
         transition: opacity 100ms ease;
+
+        &:active {
+          background-color: var(--clr-neutral-200);
+        }
       }
 
-      &:hover button[hx-delete] {
+      &:hover .btn--delete {
         visibility: unset;
         opacity: 1;
         
