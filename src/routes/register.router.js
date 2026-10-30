@@ -5,7 +5,11 @@ import User from "../models/user.model.js"
 const router = Router()
 
 router.get("/", function (req, res) {
-  res.render("register/index")
+  if (req.session.user) {
+    res.redirect("/")
+  } else {
+    res.render("register/index")
+  }
 })
 
 router.post("/", express.urlencoded({ extended: false }), async function (req, res) {

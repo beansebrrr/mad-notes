@@ -6,7 +6,11 @@ import User from "../models/user.model.js"
 const router = Router()
 
 router.get("/", function (req, res) {
-  res.render("login/index")
+  if (req.session.user) {
+    res.redirect("/")
+  } else {
+    res.render("login/index")
+  }
 })
 
 router.post("/", express.urlencoded({ extended: false }), async function (req, res) {
@@ -23,7 +27,6 @@ router.post("/", express.urlencoded({ extended: false }), async function (req, r
     if (err) next(err)
 
     req.session.user = user._id
-
     req.session.save(function (err) {
       if (err) return next(err)
       res.redirect("/")
