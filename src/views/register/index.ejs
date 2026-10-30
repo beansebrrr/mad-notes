@@ -1,18 +1,39 @@
-<h1>Create a new account</h1>
-
-<form action="/register" method="post">
-  <div class="input-field">
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" placeholder="vince">
-  </div>
-  <div class="input-field">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" placeholder="supersecretpassword123">
-  </div>
-  <div class="input-field">
-    <label for="password">Repeat Password</label>
-    <input type="password" name="repeatPassword" id="repeatPassword" placeholder="supersecretpassword123">
-  </div>
-  <button type="submit">Log in</button>
-</form>
-<p>Already have an account? <a href="/login">Log in</a></p>
+<div class="auth-form">
+  <h1>Create a new account</h1>
+  
+  <form action="/register" method="post">
+    <div class="input-field">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" placeholder="vince">
+    </div>
+    <div class="input-field">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password" 
+        placeholder="supersecretpassword123"
+        hx-post="/api/check-password"
+        hx-trigger="input changed delay:300ms"
+        hx-target=".error-message"
+        hx-vals="js:{password: this.value}"
+        >
+      </div>
+      <div class="input-field">
+      <label for="password">Repeat Password</label>
+      <input
+        type="password"
+        name="repeatPassword"
+        id="repeatPassword"
+        placeholder="supersecretpassword123"
+        hx-post="/api/check-repeat-password"
+        hx-trigger="input changed delay:300ms"
+        hx-target=".error-message"
+        hx-vals="js:{password: document.querySelector('#password').value, repeatPassword: this.value}"  
+      >
+    </div>
+    <span class="error-message"><%= locals.errorMessage %></span>
+    <button type="submit">Log in</button>
+  </form>
+  <p>Already have an account? <a href="/login">Log in</a></p>
+</div>

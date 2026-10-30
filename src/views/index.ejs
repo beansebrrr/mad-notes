@@ -1,12 +1,16 @@
-<h1>Taskthing</h1>
-
-<div id="tasks">
-  <%- include("partials/taskList", { tasks: tasks }) %>
+<div class="homepage">
+  <header>
+    <h1>Taskulater</h1>
+    <a href="/logout">Log out</a>
+  </header>
+  
+  <main id="tasks">
+    <%- include("partials/taskList", { tasks: tasks }) %>
+  </main>
+  
+  <form id="formAddTask" action="/tasks" method="post">
+    <p class="error-message"><%= locals.errorMessage %></p>
+    <input name="taskTitle" type="text" required>
+    <button type="submit">Add new task</button>
+  </form>
 </div>
-
-<form id="formAddTask" action="/tasks" method="post">
-  <input name="taskTitle" type="text">
-  <button type="submit">Add new task</button>
-</form>
-
-<a href="/logout">Log out</a>

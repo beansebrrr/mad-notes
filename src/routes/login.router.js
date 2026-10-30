@@ -14,23 +14,23 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
 	const { username, password } = req.body;
-
 	const user = await User.findOne({ username: username }).exec();
+
 	if (!user) {
-		throw new Error("User is not found");
+		res.render("login/index", { errorMessage: "Invalid username"})
 	} else if ((await bcrypt.compare(password, user.passwordHash)) === false) {
-		throw new Error("Wrong password");
-	}
-
-	req.session.regenerate((err) => {
-		if (err) next(err);
-
-		req.session.user = user._id;
-		req.session.save((err) => {
-			if (err) return next(err);
-			res.redirect("/");
+		res.render("login/index", { errorMessage: "You entered the wrong password"})
+	} else {
+		req.session.regenerate((err) => {
+			if (err) next(err);
+	
+			req.session.user = user._id;
+			req.session.save((err) => {
+				if (err) return next(err);
+				res.redirect("/");
+			});
 		});
-	});
+	}
 });
 
 export default router;

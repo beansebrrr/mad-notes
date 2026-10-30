@@ -20,21 +20,21 @@ router.post("/", async (req, res) => {
 
 	const sameNames = await User.find({ username: username }).exec();
 	if (sameNames.length > 0) {
-		throw new Error("Username is unavailable");
+		res.render("register/index", { errorMessage: "Username already exists! Please use another one." })
+	} else {
+		const user = new User({
+			username,
+			passwordHash,
+		});
+	
+		try {
+			const newUser = user.save();
+		} catch (err) {
+			console.error(":(");
+		}
+	
+		res.redirect("/");
 	}
-
-	const user = new User({
-		username,
-		passwordHash,
-	});
-
-	try {
-		const newUser = user.save();
-	} catch (err) {
-		console.error(":(");
-	}
-
-	res.redirect("/");
 });
 
 export default router;

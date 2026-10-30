@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
 	const { taskTitle } = req.body;
+
 	const task = new Task({
 		userId: req.session.user,
 		title: taskTitle,
@@ -16,11 +17,12 @@ router.post("/", async (req, res) => {
 
 	try {
 		const newTask = await task.save();
-	} catch (err) {
-		throw new Error("Error saving new task :(");
+		res.redirect("/");
+	} catch (err) {	
+		req.body.errorMessage = ""		
+		res.redirect("/");
 	}
 
-	res.redirect("/");
 });
 
 router.put("/:id", async function (req, res) {
@@ -34,7 +36,12 @@ router.put("/:id", async function (req, res) {
 	await task.save()
 
 	const tasks = await Task.find({ userId: req.session.user })
+	res.render("partials/taskList", { tasks: tasks })
+})
 
+router.delete("/:id", async function (req, res) {
+	await Task.findByIdAndDelete(req.params.id).exec()
+	const tasks = await Task.find({ userId: req.session.user })
 	res.render("partials/taskList", { tasks: tasks })
 })
 

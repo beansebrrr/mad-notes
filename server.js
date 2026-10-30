@@ -5,6 +5,7 @@ import session from "express-session";
 import mongoose from "mongoose";
 import path from "path";
 
+import apiRouter from "./src/routes/api.router.js";
 import indexRouter from "./src/routes/index.router.js";
 import loginRouter from "./src/routes/login.router.js";
 import logoutRouter from "./src/routes/logout.router.js";
@@ -45,6 +46,7 @@ db.on("open", () => console.log("Database connected"));
 
 // Routes
 app.use("/", indexRouter);
+app.use("/api", apiRouter);
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
 app.use("/register", registerRouter);

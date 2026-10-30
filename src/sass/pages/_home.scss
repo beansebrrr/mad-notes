@@ -1,0 +1,28 @@
+.homepage {
+  height: 100%;
+  display: grid;
+	grid-template-rows: auto 1fr auto;
+
+	& > header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	& > main {
+		overflow-y: scroll;
+		overflow-x: visible;
+		padding-block: var(--space-m);
+	}
+
+	& > #formAddTask {
+
+		button[type="submit"] {
+			margin-block-start: var(--space-2xs);
+			display: block;
+			width: 100%;
+			padding-block: 0.5em;
+		}
+	}
+}

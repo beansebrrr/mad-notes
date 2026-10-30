@@ -7,6 +7,13 @@
     hx-swap="innerHTML transition:true"
     <% if (task.isChecked) { %> checked <% } %>
   >
-  <span><%= task.title %></span>
-  <button hx-delete="/tasks/<%= task._id %>">Delet</button>
+  <p><%= task.title %></p>
+  <button
+    hx-delete="/tasks/<%= task._id %>"
+    hx-confirm="Are you sure you want to delete task &quot;<%= task.title %>&quot;"
+    hx-target="#tasks"
+    hx-swap="innerHTML transition:true"
+  >
+    Delet
+  </button>
 </li>
