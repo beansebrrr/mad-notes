@@ -18,3 +18,12 @@ self.addEventListener("install", (e) => {
       .then(cache => cache.addAll(FILES))
   )
 });
+
+self.addEventListener("fetch", (e) => {
+  if (e.request.method !== "GET") return;
+  e.respondWith(
+    caches.match(e.request)
+      .then(() => fetch(e.request))
+  )
+});
+
