@@ -68,12 +68,12 @@ router.put("/users/:id", async (req, res) => {
 	res.send("Updated successfully");
 });
 
-router.delete("/users/:id", async (req, res) => {
+router.delete("/users/:id", async (req, res, next) => {
 	await Task.deleteMany({
 		userId: new mongoose.Types.ObjectId(req.params.id),
 	});
 	await User.findByIdAndDelete(req.params.id);
-	res.send("Deleted the guy.");
+	res.send("Deleted");
 });
 
 export default router;

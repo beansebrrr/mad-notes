@@ -6,8 +6,8 @@ const router = Router();
 
 router.get(
 	"/",
-	(req, res, next) => {
-		if (req.session.user) {
+	async (req, res, next) => {
+		if (await User.findById(req.session.user).exec()) {
 			next();
 		} else {
 			next("route");
@@ -30,7 +30,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/profile", async (req, res) => {
-	if (!req.session.user) res.redirect("/")
+	if (!await User.findById(req.session.user).exec()) res.redirect("/")
 	const user = await User.findById(req.session.user).exec()
 	res.render("profile/index", {user: user})
 })

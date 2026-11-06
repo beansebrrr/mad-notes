@@ -4,8 +4,8 @@ import User from "../models/user.model.js";
 
 const router = Router();
 
-router.get("/", (req, res) => {
-	if (req.session.user) {
+router.get("/", async (req, res) => {
+	if (await User.findById(req.session.user).exec()) {
 		res.redirect("/");
 	} else {
 		res.render("login/index");
