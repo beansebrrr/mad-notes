@@ -1,6 +1,6 @@
 .homepage {
-  height: 100%;
-  display: grid;
+	height: 100%;
+	display: grid;
 	grid-template-rows: auto 1fr auto;
 
 	& > header {
@@ -8,6 +8,15 @@
 		align-items: center;
 		justify-content: space-between;
 		flex-wrap: wrap;
+
+	}
+	& > header nav {
+		display: flex;
+		align-items: center;
+		gap: var(--space-s);
+		img {
+			width: var(--fs-3);
+		}
 	}
 
 	& > main {
@@ -17,7 +26,6 @@
 	}
 
 	& > #formAddTask {
-
 		button[type="submit"] {
 			margin-block-start: var(--space-2xs);
 			display: block;

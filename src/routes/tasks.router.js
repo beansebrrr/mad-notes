@@ -18,31 +18,31 @@ router.post("/", async (req, res) => {
 	try {
 		const newTask = await task.save();
 		res.redirect("/");
-	} catch (err) {	
-		req.body.errorMessage = ""		
+	} catch (err) {
+		req.body.errorMessage = "";
 		res.redirect("/");
 	}
-
 });
 
-router.put("/:id", async function (req, res) {
-	const _ = req.body.checked
+router.put("/:id", async (req, res) => {
+	const _ = req.body.checked;
 	// The request body is parsed into a string so I parse it back into a boolean
-	if (!["true", "false"].includes(_)) throw new Error("A boolean value was not passed");
-	const checked = (_ === "true")
+	if (!["true", "false"].includes(_))
+		throw new Error("A boolean value was not passed");
+	const checked = _ === "true";
 
-	const task = await Task.findById(req.params.id)
-	task.isChecked = checked
-	await task.save()
+	const task = await Task.findById(req.params.id);
+	task.isChecked = checked;
+	await task.save();
 
-	const tasks = await Task.find({ userId: req.session.user })
-	res.render("partials/taskList", { tasks: tasks })
-})
+	const tasks = await Task.find({ userId: req.session.user });
+	res.render("partials/taskList", { tasks: tasks });
+});
 
-router.delete("/:id", async function (req, res) {
-	await Task.findByIdAndDelete(req.params.id).exec()
-	const tasks = await Task.find({ userId: req.session.user })
-	res.render("partials/taskList", { tasks: tasks })
-})
+router.delete("/:id", async (req, res) => {
+	await Task.findByIdAndDelete(req.params.id).exec();
+	const tasks = await Task.find({ userId: req.session.user });
+	res.render("partials/taskList", { tasks: tasks });
+});
 
 export default router;

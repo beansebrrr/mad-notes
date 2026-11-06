@@ -1,17 +1,17 @@
 .auth-form {
-  background-color: var(--clr-white);
-  border-radius: 0.5em;
-  padding: var(--space-m) var(--space-s);
-  margin-block: auto;
+	background-color: var(--clr-white);
+	border-radius: 0.5em;
+	padding: var(--space-m) var(--space-s);
+	margin-block: auto;
 
-  button[type="submit"] {
-    width: 100%;
-    margin-block-start: var(--space-m);
-    padding: 0.5em
-  }
+	button[type="submit"] {
+		width: 100%;
+		margin-block-start: var(--space-m);
+		padding: 0.5em;
+	}
 
-  p {
-    margin-block-start: var(--space-s);
-    font-size: var(--fs--1);
-  }
+	p {
+		margin-block-start: var(--space-s);
+		font-size: var(--fs--1);
+	}
 }

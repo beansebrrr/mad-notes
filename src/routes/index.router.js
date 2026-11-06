@@ -1,5 +1,6 @@
 import { Router } from "express";
 import Task from "../models/task.model.js";
+import User from "../models/user.model.js"
 
 const router = Router();
 
@@ -27,5 +28,11 @@ router.get(
 router.get("/", (req, res) => {
 	res.redirect("/login");
 });
+
+router.get("/profile", async (req, res) => {
+	if (!req.session.user) res.redirect("/")
+	const user = await User.findById(req.session.user).exec()
+	res.render("profile/index", {user: user})
+})
 
 export default router;

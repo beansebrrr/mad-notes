@@ -1,0 +1,17 @@
+<div class="profile-page">
+  <nav>
+    <a href="/">Go home</a>
+  </nav>
+  <header>
+    <img class="profile-picture" src="/user.svg" alt="Profile Picture">
+    <div class="greeting">
+      <p>Welcome back</p>
+      <h3 class="username"><%= user.username %></h3>
+    </div>
+  </header>
+
+  <form class="update-username" hx-put="/api/users/<%= user.id %>" hx-target=".update-username button[type='submit']">
+    <input type="text" name="username" required value="<%= user.username %>">
+    <button type="submit">Change username</button>
+  </form>
+</div>

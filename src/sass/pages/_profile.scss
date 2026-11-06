@@ -1,0 +1,42 @@
+.profile-page {
+  nav {
+    margin-block-end: var(--space-s);
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xs);
+    align-items: center;
+
+    @media screen and (max-width: 300px) {
+      grid-template-columns: unset;
+    }
+  }
+
+  .profile-picture {
+    display: block;
+    min-width: var(--fs-5);
+    height: 100%;
+  }
+  
+  .greeting {
+    line-height: 1.25;
+  }
+
+  .username {
+    text-transform: uppercase;
+    font-size: var(--fs-3);
+  }
+
+  .update-username {
+    margin-block: var(--space-m);
+
+    button[type="submit"] {
+      width: 100%;
+      margin-block-start: var(--space-2xs);
+    }
+  }
+}
+
+

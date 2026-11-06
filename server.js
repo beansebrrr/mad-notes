@@ -25,11 +25,14 @@ app.set("view engine", "ejs");
 app.set("views", __dirname + "/src/views");
 app.set("layout", "layouts/layout");
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/vendor/htmx", express.static(path.join(__dirname, "node_modules/htmx.org/dist")))
+app.use(
+	"/vendor/htmx",
+	express.static(path.join(__dirname, "node_modules/htmx.org/dist")),
+);
 
 app.use(expressEjsLayouts);
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }));
 
 app.use(
 	session({
