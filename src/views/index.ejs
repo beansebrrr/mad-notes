@@ -1,19 +1,23 @@
 <div class="homepage">
   <header>
-    <h1>Taskulater</h1>
+    <h1>Notets</h1>
     <nav>
       <a href="/logout">Log out</a>
       <a href="/profile"><img src="/user.svg" alt="Profile"></a>
     </nav>
   </header>
-  
-  <main id="tasks">
-    <%- include("partials/taskList", { tasks: tasks }) %>
+
+  <main>
+    <ul id="notesList">
+
+    </ul>
   </main>
-  
-  <form id="formAddTask" action="/tasks" method="post">
-    <p class="error-message"><%= locals.errorMessage %></p>
-    <input name="taskTitle" type="text" required>
-    <button type="submit">Add new task</button>
+  <form id="formNewNote">
+    <input type="hidden" id="noteId" placeholder="">
+    <input type="text" id="noteTitle">
+    <textarea class="text-field" id="noteContent"></textarea>
+    <button type="submit">Save</button>
+    <button type="button" id="clearNoteBtn">Clear Form</button>
   </form>
 </div>
+<script type="module" src="app.js"></script>

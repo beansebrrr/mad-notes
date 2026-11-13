@@ -1,4 +1,4 @@
-const CACHE_NAME = "taskulater-v1";
+const CACHE_NAME = "notes";
 
 const FILES = [
 	"/",

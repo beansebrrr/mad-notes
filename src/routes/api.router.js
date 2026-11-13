@@ -1,7 +1,6 @@
 import bcrypt from "bcryptjs";
 import { Router } from "express";
 import mongoose from "mongoose";
-import Task from "../models/task.model.js";
 import User from "../models/user.model.js";
 
 const router = Router();
@@ -69,9 +68,6 @@ router.put("/users/:id", async (req, res) => {
 });
 
 router.delete("/users/:id", async (req, res, next) => {
-	await Task.deleteMany({
-		userId: new mongoose.Types.ObjectId(req.params.id),
-	});
 	await User.findByIdAndDelete(req.params.id);
 	res.send("Deleted");
 });

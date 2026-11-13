@@ -4,7 +4,7 @@
 	}
 }
 
-input:is([type="text"], [type="password"]) {
+input:is([type="text"], [type="password"]), .text-field {
 	display: block;
 	padding: 0.25em 0.75em;
 	width: 100%;
