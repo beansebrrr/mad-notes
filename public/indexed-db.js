@@ -8,22 +8,22 @@ export function openDatabase() {
 	return new Promise((resolve, reject) => {
 		const request = indexedDB.open(DB_NAME, DB_VERSION);
 
-		request.onupgradeneeded = function (event) {
+		request.onupgradeneeded = (event) => {
 			db = event.target.result;
 			if (!db.objectStoreNames.contains(STORE_NAME)) {
 				db.createObjectStore(STORE_NAME, {
 					keyPath: "id",
-					autoIncrement: true
+					autoIncrement: true,
 				});
 			}
 		};
 
-		request.onsuccess = function (event) {
+		request.onsuccess = (event) => {
 			db = event.target.result;
 			resolve(db);
 		};
- 
-		request.onerror = function () {
+
+		request.onerror = () => {
 			reject(request.error);
 		};
 	});
@@ -37,16 +37,16 @@ export function addNote(title, content) {
 		const note = {
 			title: title,
 			content: content,
-			createdAt: new Date().toISOString()
+			createdAt: new Date().toISOString(),
 		};
 
 		const request = store.add(note);
 
-		request.onsuccess = function () {
+		request.onsuccess = () => {
 			resolve(request.result);
 		};
 
-		request.onerror = function () {
+		request.onerror = () => {
 			reject(request.error);
 		};
 	});
@@ -58,11 +58,11 @@ export function getNotes() {
 		const store = transaction.objectStore(STORE_NAME);
 		const request = store.getAll();
 
-		request.onsuccess = function () {
+		request.onsuccess = () => {
 			resolve(request.result);
 		};
 
-		request.onerror = function () {
+		request.onerror = () => {
 			reject(request.error);
 		};
 	});
@@ -75,7 +75,7 @@ export function updateNote(id, title, content) {
 
 		const request = store.get(Number(id));
 
-		request.onsuccess = function () {
+		request.onsuccess = () => {
 			const note = request.result;
 
 			if (!note) {
@@ -88,16 +88,16 @@ export function updateNote(id, title, content) {
 
 			const updateRequest = store.put(note);
 
-			updateRequest.onsuccess = function () {
+			updateRequest.onsuccess = () => {
 				resolve(true);
 			};
 
-			updateRequest.onerror = function () {
+			updateRequest.onerror = () => {
 				reject(updateRequest.error);
 			};
 		};
 
-		request.onerror = function () {
+		request.onerror = () => {
 			reject(request.error);
 		};
 	});
@@ -109,11 +109,11 @@ export function deleteNote(id) {
 		const store = transaction.objectStore(STORE_NAME);
 		const request = store.delete(Number(id));
 
-		request.onsuccess = function () {
+		request.onsuccess = () => {
 			resolve(true);
 		};
 
-		request.onerror = function () {
+		request.onerror = () => {
 			reject(request.error);
 		};
 	});

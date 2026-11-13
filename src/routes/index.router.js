@@ -1,5 +1,5 @@
 import { Router } from "express";
-import User from "../models/user.model.js"
+import User from "../models/user.model.js";
 
 const router = Router();
 
@@ -22,9 +22,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/profile", async (req, res) => {
-	if (!await User.findById(req.session.user).exec()) res.redirect("/")
-	const user = await User.findById(req.session.user).exec()
-	res.render("profile/index", {user: user})
-})
+	if (!(await User.findById(req.session.user).exec())) res.redirect("/");
+	const user = await User.findById(req.session.user).exec();
+	res.render("profile/index", { user: user });
+});
 
 export default router;

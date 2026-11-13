@@ -54,11 +54,11 @@ router.post("/users", async (req, res) => {
 });
 
 router.put("/users/:id", async (req, res) => {
-	const newUsername = req.body.username.toLowerCase()
+	const newUsername = req.body.username.toLowerCase();
 	if (newUsername === null || newUsername.trim() === "") {
-		res.send("Please enter a valid username")
+		res.send("Please enter a valid username");
 	} else if ((await User.find({ username: newUsername }).exec()).length > 0) {
-		res.send("Username already taken")
+		res.send("Username already taken");
 	}
 
 	const user = await User.findById(req.params.id);
